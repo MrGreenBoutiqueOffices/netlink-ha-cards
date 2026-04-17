@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/MrGreenBoutiqueOffices/netlink-ha-cards#readme",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-replace": "^6.0.3",
     "@rollup/plugin-terser": "^1.0.0",
