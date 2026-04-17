@@ -48,9 +48,9 @@ type: module
 
 ## Cards
 
-| Card                              | Element                               | Description                                                                       |
-| --------------------------------- | ------------------------------------- | --------------------------------------------------------------------------------- |
-| `custom:netlink-access-code-card` | [Access Code Card](#access-code-card) | Shows the current NetLink daily access code with expiry countdown and copy button |
+| Card                              | Element                               | Description                                                                             |
+| --------------------------------- | ------------------------------------- | --------------------------------------------------------------------------------------- |
+| `custom:netlink-access-code-card` | [Access Code Card](#access-code-card) | Shows the current NetLink daily access code with expiry countdown and copy button       |
 | `custom:netlink-status-card`      | [Status Card](#status-card)           | Operational summary of desk height mismatch, display source mismatch, and active errors |
 
 ---
