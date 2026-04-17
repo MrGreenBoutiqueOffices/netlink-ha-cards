@@ -11,18 +11,19 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/MrGreenBoutiqueOffices/netlink-ha-cards/actions/workflows/linting.yaml">
-    <img src="https://github.com/MrGreenBoutiqueOffices/netlink-ha-cards/actions/workflows/linting.yaml/badge.svg" alt="Linting" />
-  </a>
-  <a href="LICENSE">
-    <img src="https://img.shields.io/badge/license-LGPL--3.0-blue" alt="License" />
-  </a>
-  <a href="https://github.com/hacs/integration">
-    <img src="https://img.shields.io/badge/HACS-Custom-orange.svg" alt="HACS" />
-  </a>
+  <a href="https://github.com/MrGreenBoutiqueOffices/netlink-ha-cards/actions/workflows/linting.yaml"><img
+    src="https://github.com/MrGreenBoutiqueOffices/netlink-ha-cards/actions/workflows/linting.yaml/badge.svg"
+    alt="Linting"
+  /></a>
+  <a href="LICENSE"><img
+    src="https://img.shields.io/badge/license-LGPL--3.0-blue"
+    alt="License"
+  /></a>
+  <a href="https://github.com/hacs/integration"><img
+    src="https://img.shields.io/badge/HACS-Custom-orange.svg"
+    alt="HACS"
+  /></a>
 </p>
-
----
 
 ## Installation
 
@@ -56,7 +57,7 @@ type: module
 
 ## Access Code Card
 
-![Access Code Card](assets/card-access-code.png)
+<img src="assets/card-access-code.png" alt="Access Code Card" width="520">
 
 Displays the current NetLink daily access code for a given purpose. The card shows the code, its expiry time, a live countdown, a progress bar, and a warning badge when rollover is approaching.
 
@@ -83,7 +84,7 @@ warningThresholdMinutes: 60
 
 ## Status Card
 
-![Status Card](assets/card-status.png)
+<img src="assets/card-status.png" alt="Status Card" width="360">
 
 Provides a compact operational overview for a room, area, or site. It groups issues into three categories — desk height drift, display source drift, and active errors — and shows an overall severity banner.
 
