@@ -270,7 +270,10 @@ export class NetlinkAccessCodeCard extends LitElement {
             `
           : html``}
         <div class="actions">
-          <button type="button" @click=${() => this.copyCode(code)}>
+          <button
+            type="button"
+            @click=${(event: Event) => this.handleCopyClick(event, code)}
+          >
             ${copyLabel}
           </button>
         </div>
@@ -314,16 +317,49 @@ export class NetlinkAccessCodeCard extends LitElement {
   }
 
   private async copyCode(code: string): Promise<void> {
-    if (!code || code === "Not available") {
+    if (!this.isCopyableCode(code)) {
       return;
     }
 
     try {
-      await navigator.clipboard.writeText(code);
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(code);
+      } else {
+        this.copyCodeWithFallback(code);
+      }
       this.copyFeedbackUntil = Date.now() + 2500;
     } catch {
-      this.copyFeedbackUntil = 0;
+      try {
+        this.copyCodeWithFallback(code);
+        this.copyFeedbackUntil = Date.now() + 2500;
+      } catch {
+        this.copyFeedbackUntil = 0;
+      }
     }
+  }
+
+  private handleCopyClick(event: Event, code: string): void {
+    event.preventDefault();
+    event.stopPropagation();
+    void this.copyCode(code);
+  }
+
+  private isCopyableCode(code: string): boolean {
+    return /^\d{4,8}$/.test(code.trim());
+  }
+
+  private copyCodeWithFallback(code: string): void {
+    const textarea = document.createElement("textarea");
+    textarea.value = code;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    textarea.style.pointerEvents = "none";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
   }
 }
 
