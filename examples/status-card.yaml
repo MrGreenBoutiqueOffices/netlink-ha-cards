@@ -1,0 +1,9 @@
+type: custom:netlink-status-card
+title: Status
+target_desk_height: 95 cm
+target_source: HDMI1
+desk_label: desk
+display_label: dell
+error_labels:
+  - desk
+  - dell

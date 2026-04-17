@@ -35,10 +35,10 @@ type: module
 
 ## Cards
 
-| Card | Element | Description |
-|------|---------|-------------|
+| Card                              | Element                               | Description                                                                       |
+| --------------------------------- | ------------------------------------- | --------------------------------------------------------------------------------- |
 | `custom:netlink-access-code-card` | [Access Code Card](#access-code-card) | Shows the current NetLink daily access code with expiry countdown and copy button |
-| `custom:netlink-status-card` | [Status Card](#status-card) | Operational summary of desk height drift, display source drift, and active errors |
+| `custom:netlink-status-card`      | [Status Card](#status-card)           | Operational summary of desk height drift, display source drift, and active errors |
 
 ---
 
@@ -48,12 +48,12 @@ Displays the current NetLink daily access code for a given purpose. The card sho
 
 ### Configuration
 
-| Option | Type | Required | Default | Description |
-|--------|------|----------|---------|-------------|
-| `purpose` | `string` | Yes | — | Access code purpose: `web_login` or `signing_maintenance` |
-| `title` | `string` | No | Derived from `purpose` | Card title |
-| `icon` | `string` | No | Derived from `purpose` | Card icon (any `mdi:` icon) |
-| `warningThresholdMinutes` | `number` | No | `60` | Minutes before expiry at which the warning state activates |
+| Option                    | Type     | Required | Default                | Description                                                |
+| ------------------------- | -------- | -------- | ---------------------- | ---------------------------------------------------------- |
+| `purpose`                 | `string` | Yes      | —                      | Access code purpose: `web_login` or `signing_maintenance`  |
+| `title`                   | `string` | No       | Derived from `purpose` | Card title                                                 |
+| `icon`                    | `string` | No       | Derived from `purpose` | Card icon (any `mdi:` icon)                                |
+| `warningThresholdMinutes` | `number` | No       | `60`                   | Minutes before expiry at which the warning state activates |
 
 ### Example
 
@@ -75,18 +75,18 @@ Entity discovery works via HA labels. Explicit entity lists override label-based
 
 ### Configuration
 
-| Option | Type | Required | Default | Description |
-|--------|------|----------|---------|-------------|
-| `title` | `string` | No | `"Status"` | Card title |
-| `target_desk_height` | `string` | No | `"95 cm"` | Expected desk height (e.g. `"72 cm"`) |
-| `target_source` | `string` | No | `"HDMI1"` | Expected display source (e.g. `"HDMI2"`) |
-| `desk_label` | `string` | No | `"desk"` | HA label used to discover desk height entities |
-| `display_label` | `string` | No | `"dell"` | HA label used to discover display source entities |
-| `error_labels` | `string[]` | No | `[]` | HA labels used to discover error entities |
-| `area_ids` | `string[]` | No | `[]` | Scope discovery to specific HA areas. Empty = all areas |
-| `desk_height_entities` | `string[]` | No | `[]` | Explicit entity IDs for desk heights (overrides `desk_label`) |
-| `display_source_entities` | `string[]` | No | `[]` | Explicit entity IDs for display sources (overrides `display_label`) |
-| `error_entities` | `string[]` | No | `[]` | Explicit entity IDs for errors (overrides `error_labels`) |
+| Option                    | Type       | Required | Default    | Description                                                         |
+| ------------------------- | ---------- | -------- | ---------- | ------------------------------------------------------------------- |
+| `title`                   | `string`   | No       | `"Status"` | Card title                                                          |
+| `target_desk_height`      | `string`   | No       | `"95 cm"`  | Expected desk height (e.g. `"72 cm"`)                               |
+| `target_source`           | `string`   | No       | `"HDMI1"`  | Expected display source (e.g. `"HDMI2"`)                            |
+| `desk_label`              | `string`   | No       | `"desk"`   | HA label used to discover desk height entities                      |
+| `display_label`           | `string`   | No       | `"dell"`   | HA label used to discover display source entities                   |
+| `error_labels`            | `string[]` | No       | `[]`       | HA labels used to discover error entities                           |
+| `area_ids`                | `string[]` | No       | `[]`       | Scope discovery to specific HA areas. Empty = all areas             |
+| `desk_height_entities`    | `string[]` | No       | `[]`       | Explicit entity IDs for desk heights (overrides `desk_label`)       |
+| `display_source_entities` | `string[]` | No       | `[]`       | Explicit entity IDs for display sources (overrides `display_label`) |
+| `error_entities`          | `string[]` | No       | `[]`       | Explicit entity IDs for errors (overrides `error_labels`)           |
 
 ### Example — label-based discovery (recommended)
 

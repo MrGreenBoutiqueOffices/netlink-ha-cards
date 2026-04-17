@@ -13,9 +13,10 @@ npm install
 
 ## Available commands
 
-| Command | Description |
-|---------|-------------|
-| `npm run check` | Type-check without emitting output |
-| `npm run lint` | Lint TypeScript source files |
-| `npm run format` | Check code formatting with Prettier |
-| `npm run build` | Bundle to `dist/netlink-ha-cards.js` |
+| Command                | Description                          |
+| ---------------------- | ------------------------------------ |
+| `npm run typecheck`    | Type-check without emitting output   |
+| `npm run lint`         | Lint TypeScript source files         |
+| `npm run format:check` | Check code formatting without fixing |
+| `npm run format`       | Format code using Prettier           |
+| `npm run build`        | Bundle to `dist/netlink-ha-cards.js` |
