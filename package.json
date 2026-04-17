@@ -6,9 +6,10 @@
   "type": "module",
   "scripts": {
     "build": "rollup -c",
-    "check": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint \"src/**/*.ts\" \"rollup.config.js\"",
-    "format": "prettier --check .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "prepare-release": "npm run check && npm run build"
   },
   "repository": {

@@ -1,0 +1,5 @@
+type: custom:netlink-access-code-card
+purpose: web_login
+title: Web login
+icon: mdi:web
+warningThresholdMinutes: 60
