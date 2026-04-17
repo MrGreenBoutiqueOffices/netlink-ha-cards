@@ -123,16 +123,4 @@ error_entities:
 
 ## Development
 
-```bash
-npm install
-npm run check
-npm run lint
-npm run format
-npm run build
-```
-
-Build output: `dist/netlink-ha-cards.js`
-
-### Release model
-
-Releases are managed via GitHub. `package.json` stays on version `0.0.0` in git; release assets are built and attached when a GitHub release is published.
+See [DEVELOPMENT.md](DEVELOPMENT.md) for setup instructions and available commands.
