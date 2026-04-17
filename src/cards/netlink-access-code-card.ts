@@ -270,7 +270,10 @@ export class NetlinkAccessCodeCard extends LitElement {
             `
           : html``}
         <div class="actions">
-          <button type="button" @click=${(event: Event) => this.handleCopyClick(event, code)}>
+          <button
+            type="button"
+            @click=${(event: Event) => this.handleCopyClick(event, code)}
+          >
             ${copyLabel}
           </button>
         </div>
