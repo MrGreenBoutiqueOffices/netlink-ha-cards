@@ -1,8 +1,26 @@
-# NetLink HA Cards
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/MrGreenBoutiqueOffices/netlink-ha-cards/main/assets/logo/wordmark-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/MrGreenBoutiqueOffices/netlink-ha-cards/main/assets/logo/wordmark-light.svg">
+    <img alt="NetLink HA Cards" src="https://raw.githubusercontent.com/MrGreenBoutiqueOffices/netlink-ha-cards/main/assets/logo/wordmark-light.svg" width="260">
+  </picture>
+</p>
 
-Custom Home Assistant dashboard cards for NetLink environments — showing daily access codes and operational status of desks and displays.
+<p align="center">
+  Custom Home Assistant dashboard cards for NetLink sit-stand desks and displays.
+</p>
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
+<p align="center">
+  <a href="https://github.com/MrGreenBoutiqueOffices/netlink-ha-cards/actions/workflows/linting.yaml">
+    <img src="https://github.com/MrGreenBoutiqueOffices/netlink-ha-cards/actions/workflows/linting.yaml/badge.svg" alt="Linting" />
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/license-LGPL--3.0-blue" alt="License" />
+  </a>
+  <a href="https://github.com/hacs/integration">
+    <img src="https://img.shields.io/badge/HACS-Custom-orange.svg" alt="HACS" />
+  </a>
+</p>
 
 ---
 
@@ -15,12 +33,6 @@ Custom Home Assistant dashboard cards for NetLink environments — showing daily
 1. Open HACS in Home Assistant.
 2. Add this repository as a custom frontend repository.
 3. Install `NetLink HA Cards`.
-4. Add the resource:
-
-```yaml
-url: /hacsfiles/netlink-ha-cards/netlink-ha-cards.js
-type: module
-```
 
 ### Manual Installation
 
@@ -43,6 +55,8 @@ type: module
 ---
 
 ## Access Code Card
+
+![Access Code Card](assets/card-access-code.png)
 
 Displays the current NetLink daily access code for a given purpose. The card shows the code, its expiry time, a live countdown, a progress bar, and a warning badge when rollover is approaching.
 
@@ -68,6 +82,8 @@ warningThresholdMinutes: 60
 ---
 
 ## Status Card
+
+![Status Card](assets/card-status.png)
 
 Provides a compact operational overview for a room, area, or site. It groups issues into three categories — desk height drift, display source drift, and active errors — and shows an overall severity banner.
 
