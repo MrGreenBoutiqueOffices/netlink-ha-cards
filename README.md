@@ -141,3 +141,7 @@ error_entities:
 ## Development
 
 See [DEVELOPMENT.md](DEVELOPMENT.md) for setup instructions and available commands.
+
+## License
+
+Distributed under the **LGPL-3.0-only** License - see [LICENSE](LICENSE) for details.
