@@ -285,8 +285,8 @@ export class NetlinkStatusCard extends LitElement {
 
     const severity = this.severity(deskIssues, sourceIssues, errors);
     const summary = [
-      { label: "Desk drift", count: deskIssues.length },
-      { label: "Source drift", count: sourceIssues.length },
+      { label: "Desk mismatch", count: deskIssues.length },
+      { label: "Source mismatch", count: sourceIssues.length },
       { label: "Errors", count: errors.length },
     ];
 
@@ -321,13 +321,13 @@ export class NetlinkStatusCard extends LitElement {
             errors
           )}
           ${this.renderCategory(
-            `Desk drift vs ${this.config.target_desk_height}`,
+            `Desk mismatch vs ${this.config.target_desk_height}`,
             deskIssues.length,
             deskIssues.length > 0 ? "warning" : "ok",
             deskIssues
           )}
           ${this.renderCategory(
-            `Source drift vs ${this.config.target_source}`,
+            `Source mismatch vs ${this.config.target_source}`,
             sourceIssues.length,
             sourceIssues.length > 0 ? "warning" : "ok",
             sourceIssues
@@ -555,5 +555,5 @@ customElements.define("netlink-status-card", NetlinkStatusCard);
 registerCustomCard(
   "netlink-status-card",
   "NetLink Status Card",
-  "Summarizes desk drift, display drift and errors for a room or site."
+  "Summarizes desk mismatch, display mismatch and errors for a room or site."
 );

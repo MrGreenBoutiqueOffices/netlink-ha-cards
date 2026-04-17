@@ -51,7 +51,7 @@ type: module
 | Card                              | Element                               | Description                                                                       |
 | --------------------------------- | ------------------------------------- | --------------------------------------------------------------------------------- |
 | `custom:netlink-access-code-card` | [Access Code Card](#access-code-card) | Shows the current NetLink daily access code with expiry countdown and copy button |
-| `custom:netlink-status-card`      | [Status Card](#status-card)           | Operational summary of desk height drift, display source drift, and active errors |
+| `custom:netlink-status-card`      | [Status Card](#status-card)           | Operational summary of desk height mismatch, display source mismatch, and active errors |
 
 ---
 
@@ -86,7 +86,7 @@ warningThresholdMinutes: 60
 
 <img src="assets/card-status.png" alt="Status Card" width="360">
 
-Provides a compact operational overview for a room, area, or site. It groups issues into three categories — desk height drift, display source drift, and active errors — and shows an overall severity banner.
+Provides a compact operational overview for a room, area, or site. It groups issues into three categories — desk height mismatch, display source mismatch, and active errors — and shows an overall severity banner.
 
 Entity discovery works via HA labels. Explicit entity lists override label-based discovery when provided.
 
