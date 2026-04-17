@@ -10,7 +10,7 @@
     "lint": "eslint \"src/**/*.ts\" \"rollup.config.js\"",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare-release": "npm run check && npm run build"
+    "prepare-release": "npm run typecheck && npm run build"
   },
   "repository": {
     "type": "git",

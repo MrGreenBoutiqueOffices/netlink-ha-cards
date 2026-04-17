@@ -35,6 +35,8 @@ jobs:
           echo "RELEASE_VERSION=${VERSION}" >> "$GITHUB_ENV"
       - name: 🔢 Bump package version
         run: npm version "$RELEASE_VERSION" --no-git-tag-version
+      - name: 🚀 Build release assets
+        run: npm run build
       - name: 📦 Archive dist
         run: cd dist && zip -r ../netlink-ha-cards.zip .
       - name: 🚀 Upload release assets
