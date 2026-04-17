@@ -1,0 +1,50 @@
+{
+  "name": "netlink-ha-cards",
+  "version": "0.0.0",
+  "description": "NetLink Home Assistant dashboard cards",
+  "main": "dist/netlink-ha-cards.js",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "check": "tsc --noEmit",
+    "lint": "eslint \"src/**/*.ts\" \"rollup.config.js\"",
+    "format": "prettier --check .",
+    "prepare-release": "npm run check && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrGreenBoutiqueOffices/netlink-ha-cards"
+  },
+  "keywords": [
+    "home-assistant",
+    "dashboard",
+    "hacs",
+    "netlink"
+  ],
+  "author": "Mr.Green Offices",
+  "contributors": [
+    "Klaas Schoute (https://github.com/klaasnicolaas)"
+  ],
+  "license": "LGPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/MrGreenBoutiqueOffices/netlink-ha-cards/issues"
+  },
+  "homepage": "https://github.com/MrGreenBoutiqueOffices/netlink-ha-cards#readme",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.4",
+    "@typescript-eslint/eslint-plugin": "^8.46.1",
+    "@typescript-eslint/parser": "^8.46.1",
+    "eslint": "^9.37.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2",
+    "rollup": "^4.52.5",
+    "tslib": "^2.8.1",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "lit": "^3.3.1"
+  }
+}

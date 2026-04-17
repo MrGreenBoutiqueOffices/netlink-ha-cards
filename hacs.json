@@ -1,0 +1,7 @@
+{
+  "name": "NetLink HA Cards",
+  "content_in_root": false,
+  "filename": "netlink-ha-cards.js",
+  "homeassistant": "2026.1.0",
+  "render_readme": true
+}

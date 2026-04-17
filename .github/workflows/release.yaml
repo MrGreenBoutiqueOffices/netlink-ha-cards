@@ -1,0 +1,46 @@
+---
+name: Release
+
+# yamllint disable-line rule:truthy
+on:
+  release:
+    types:
+      - published
+
+env:
+  DEFAULT_NODE: 24
+  RELEASE_TAG: ${{ github.event.release.tag_name }}
+
+jobs:
+  release:
+    name: Build release assets
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - name: 🏗 Set up Node.js ${{ env.DEFAULT_NODE }}
+        uses: actions/setup-node@v6.3.0
+        with:
+          node-version: ${{ env.DEFAULT_NODE }}
+          cache: npm
+      - name: 🏗 Install dependencies
+        run: npm ci
+      - name: 🔎 Resolve release version
+        run: |
+          VERSION="${RELEASE_TAG#v}"
+          echo "RELEASE_VERSION=${VERSION}" >> "$GITHUB_ENV"
+      - name: 🔢 Bump package version
+        run: npm version "$RELEASE_VERSION" --no-git-tag-version
+      - name: 📦 Archive dist
+        run: cd dist && zip -r ../netlink-ha-cards.zip .
+      - name: 🚀 Upload release assets
+        uses: softprops/action-gh-release@v3.0.0
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          files: |
+            dist/netlink-ha-cards.js
+            netlink-ha-cards.zip
