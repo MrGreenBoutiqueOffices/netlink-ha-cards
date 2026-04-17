@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "rollup -c",
+    "dev": "rollup -c -w",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"src/**/*.ts\" \"rollup.config.js\"",
     "format": "prettier --write .",
@@ -33,6 +34,7 @@
   "homepage": "https://github.com/MrGreenBoutiqueOffices/netlink-ha-cards#readme",
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-replace": "^6.0.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.4",
     "@typescript-eslint/eslint-plugin": "^8.46.1",
