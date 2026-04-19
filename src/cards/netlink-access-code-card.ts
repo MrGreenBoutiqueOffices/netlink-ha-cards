@@ -169,7 +169,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       display: grid;
       gap: 8px;
       color: var(--secondary-text-color);
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .meta-line {
@@ -195,6 +195,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       min-width: 0;
       line-height: 1.25;
       overflow-wrap: anywhere;
+      white-space: nowrap;
     }
 
     .warning {
