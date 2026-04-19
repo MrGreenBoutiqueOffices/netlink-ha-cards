@@ -34,10 +34,13 @@
 1. Open HACS in Home Assistant.
 2. Add this repository as a custom frontend repository.
 3. Install `NetLink HA Cards`.
+4. Reload Home Assistant if needed.
 
 ### Manual Installation
 
-Copy the built file to your Home Assistant `www` folder and add:
+1. Download `netlink-ha-cards.js` from the latest release.
+2. Copy it to your Home Assistant `config/www` directory.
+3. Add this resource manually:
 
 ```yaml
 url: /local/netlink-ha-cards.js
