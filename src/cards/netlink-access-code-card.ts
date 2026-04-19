@@ -70,22 +70,22 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     .shell {
       display: grid;
-      gap: 18px;
-      padding: 20px;
+      gap: 10px;
+      padding: 14px;
     }
 
     .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
       min-width: 0;
     }
 
     .header-main {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       min-width: 0;
     }
 
@@ -93,9 +93,9 @@ export class NetlinkAccessCodeCard extends LitElement {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
       color: color-mix(in srgb, var(--primary-color) 82%, white 18%);
       background: linear-gradient(
         180deg,
@@ -110,12 +110,12 @@ export class NetlinkAccessCodeCard extends LitElement {
     .header-copy {
       min-width: 0;
       display: grid;
-      gap: 2px;
+      gap: 0;
     }
 
     .eyebrow {
       color: var(--secondary-text-color);
-      font-size: 11px;
+      font-size: 9px;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -123,9 +123,9 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     .title {
       color: var(--primary-text-color);
-      font-size: 17px;
+      font-size: 14px;
       font-weight: 700;
-      line-height: 1.15;
+      line-height: 1.1;
       min-width: 0;
       text-wrap: balance;
     }
@@ -134,27 +134,27 @@ export class NetlinkAccessCodeCard extends LitElement {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 7px 10px;
+      padding: 4px 7px;
       border-radius: 999px;
       color: var(--secondary-text-color);
       background: color-mix(in srgb, var(--divider-color) 18%, transparent);
       box-shadow: inset 0 0 0 1px
         color-mix(in srgb, var(--divider-color) 40%, transparent);
-      font-size: 12px;
+      font-size: 10px;
       font-weight: 600;
       white-space: nowrap;
     }
 
     .body {
       display: grid;
-      gap: 16px;
+      gap: 10px;
     }
 
     .hero {
       display: grid;
-      gap: 14px;
-      padding: 16px;
-      border-radius: 20px;
+      gap: 8px;
+      padding: 10px;
+      border-radius: 14px;
       background: linear-gradient(
         180deg,
         color-mix(in srgb, var(--primary-color) 14%, transparent) 0%,
@@ -168,13 +168,13 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     .code-card {
       display: grid;
-      gap: 8px;
+      gap: 2px;
       min-width: 0;
     }
 
     .code-label {
       color: var(--secondary-text-color);
-      font-size: 12px;
+      font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.04em;
       text-transform: uppercase;
@@ -183,10 +183,10 @@ export class NetlinkAccessCodeCard extends LitElement {
     .code {
       font-family:
         "SFMono-Regular", "SF Mono", "Roboto Mono", "Menlo", monospace;
-      font-size: clamp(28px, 9.5cqi, 44px);
+      font-size: clamp(22px, 8cqi, 34px);
       line-height: 0.94;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.05em;
       color: var(--primary-text-color);
       text-wrap: nowrap;
       overflow: hidden;
@@ -196,7 +196,7 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     .code.missing {
       font-family: inherit;
-      font-size: 18px;
+      font-size: 15px;
       line-height: 1.2;
       letter-spacing: normal;
       text-wrap: balance;
@@ -205,25 +205,25 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     .code-hint {
       color: var(--secondary-text-color);
-      font-size: 13px;
-      line-height: 1.4;
+      font-size: 11px;
+      line-height: 1.25;
     }
 
     .empty-state {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 12px;
-      border-radius: 12px;
+      padding: 6px 9px;
+      border-radius: 9px;
       background: color-mix(in srgb, var(--divider-color) 18%, transparent);
       color: var(--secondary-text-color);
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 500;
     }
 
     .actions {
       display: flex;
-      gap: 10px;
+      gap: 6px;
     }
 
     button {
@@ -231,10 +231,10 @@ export class NetlinkAccessCodeCard extends LitElement {
       align-items: center;
       justify-content: center;
       gap: 8px;
-      min-height: 42px;
-      padding: 0 14px;
+      min-height: 32px;
+      padding: 0 10px;
       border: 0;
-      border-radius: 14px;
+      border-radius: 10px;
       background: linear-gradient(
         180deg,
         color-mix(in srgb, var(--primary-color) 26%, transparent) 0%,
@@ -246,7 +246,7 @@ export class NetlinkAccessCodeCard extends LitElement {
           color-mix(in srgb, var(--primary-color) 20%, transparent),
         0 10px 24px color-mix(in srgb, var(--primary-color) 12%, transparent);
       font: inherit;
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 700;
       cursor: pointer;
       transition:
@@ -270,14 +270,14 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     .facts {
       display: grid;
-      gap: 10px;
+      gap: 6px;
     }
 
     .fact {
       display: grid;
-      gap: 8px;
-      padding: 14px;
-      border-radius: 18px;
+      gap: 4px;
+      padding: 8px 10px;
+      border-radius: 12px;
       background: color-mix(in srgb, var(--divider-color) 14%, transparent);
       box-shadow: inset 0 0 0 1px
         color-mix(in srgb, var(--divider-color) 32%, transparent);
@@ -289,7 +289,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       gap: 8px;
       min-width: 0;
       color: var(--secondary-text-color);
-      font-size: 12px;
+      font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
@@ -303,19 +303,19 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     .fact-value {
       color: var(--primary-text-color);
-      font-size: 15px;
+      font-size: 12px;
       font-weight: 600;
-      line-height: 1.35;
+      line-height: 1.2;
       overflow-wrap: anywhere;
     }
 
     .warning {
       display: grid;
       grid-template-columns: 18px minmax(0, 1fr);
-      gap: 10px;
+      gap: 7px;
       align-items: start;
-      padding: 12px 14px;
-      border-radius: 16px;
+      padding: 8px 10px;
+      border-radius: 12px;
       background: color-mix(
         in srgb,
         var(--warning-color, #f59e0b) 14%,
@@ -324,20 +324,19 @@ export class NetlinkAccessCodeCard extends LitElement {
       box-shadow: inset 0 0 0 1px
         color-mix(in srgb, var(--warning-color, #f59e0b) 24%, transparent);
       color: var(--warning-color, #f59e0b);
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 600;
       line-height: 1.35;
     }
 
     .warning ha-icon {
-      width: 18px;
-      height: 18px;
-      margin-top: 1px;
+      width: 16px;
+      height: 16px;
     }
 
     .progress-wrap {
       display: grid;
-      gap: 8px;
+      gap: 6px;
     }
 
     .progress-header {
@@ -346,14 +345,14 @@ export class NetlinkAccessCodeCard extends LitElement {
       justify-content: space-between;
       gap: 12px;
       color: var(--secondary-text-color);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
     .progress {
-      height: 12px;
+      height: 8px;
       border-radius: 999px;
       overflow: hidden;
       background: color-mix(in srgb, var(--divider-color) 26%, transparent);
@@ -376,11 +375,11 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     @container (max-width: 280px) {
       .shell {
-        padding: 18px;
+        padding: 12px;
       }
 
       .body {
-        gap: 10px;
+        gap: 8px;
       }
 
       .header {
@@ -393,12 +392,12 @@ export class NetlinkAccessCodeCard extends LitElement {
       }
 
       .hero {
-        padding: 14px;
+        padding: 9px;
       }
 
       .code {
-        font-size: clamp(21px, 18cqi, 30px);
-        letter-spacing: 0.04em;
+        font-size: clamp(19px, 15cqi, 26px);
+        letter-spacing: 0.03em;
       }
 
       .facts {
@@ -414,7 +413,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       }
 
       .progress {
-        height: 10px;
+        height: 7px;
       }
     }
 
@@ -436,11 +435,11 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     @container (min-width: 560px) {
       .shell {
-        padding: 22px;
+        padding: 16px;
       }
 
       .body {
-        gap: 18px;
+        gap: 10px;
       }
 
       .header {
@@ -448,20 +447,20 @@ export class NetlinkAccessCodeCard extends LitElement {
       }
 
       .title {
-        font-size: 18px;
+        font-size: 15px;
       }
 
       .code {
-        font-size: clamp(34px, 7cqi, 46px);
-        letter-spacing: 0.08em;
+        font-size: clamp(24px, 5.8cqi, 34px);
+        letter-spacing: 0.06em;
       }
 
       .fact {
-        padding: 16px;
+        padding: 9px 11px;
       }
 
       button {
-        padding-inline: 16px;
+        padding-inline: 12px;
       }
     }
   `;
