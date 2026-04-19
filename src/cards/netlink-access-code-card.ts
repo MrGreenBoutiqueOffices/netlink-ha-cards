@@ -103,6 +103,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       gap: 14px;
       flex: 1;
       min-height: 0;
+      padding-top: 2px;
     }
 
     .primary {
@@ -111,7 +112,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       justify-items: center;
       gap: 8px;
       min-height: 0;
-      padding-block: 4px;
+      padding-block: 6px 2px;
     }
 
     .secondary {
@@ -123,7 +124,7 @@ export class NetlinkAccessCodeCard extends LitElement {
     .code {
       font-family:
         "SFMono-Regular", "SF Mono", "Roboto Mono", "Menlo", monospace;
-      font-size: clamp(28px, 10cqi, 42px);
+      font-size: clamp(32px, 10.5cqi, 46px);
       line-height: 1;
       font-weight: 700;
       letter-spacing: 0.06em;
@@ -335,6 +336,10 @@ export class NetlinkAccessCodeCard extends LitElement {
     }
 
     @container (max-height: 255px) and (max-width: 620px) {
+      .body {
+        padding-top: 4px;
+      }
+
       .header {
         margin-bottom: 10px;
       }
@@ -345,10 +350,11 @@ export class NetlinkAccessCodeCard extends LitElement {
 
       .primary {
         gap: 4px;
+        padding-block: 8px 2px;
       }
 
       .code {
-        font-size: clamp(26px, 9cqi, 38px);
+        font-size: clamp(28px, 9.5cqi, 40px);
         line-height: 1.1;
         letter-spacing: 0.03em;
       }
@@ -413,7 +419,7 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     @container (min-height: 280px) {
       .primary {
-        padding-block: 8px;
+        padding-block: 10px 4px;
       }
 
       .code {
