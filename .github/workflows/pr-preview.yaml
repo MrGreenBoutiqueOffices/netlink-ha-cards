@@ -80,15 +80,17 @@ jobs:
 
             const body = [
               marker,
-              `Preview build for \`${shortSha}\` is ready.`,
+              '## 🎉 Preview build ready!',
               '',
-              'Download:',
+              `Built from \`${shortSha}\`.`,
+              '',
               `- [Download preview build](${artifactUrl})`,
               '',
-              'Test in Home Assistant:',
+              '### 📝 Installation instructions',
               '1. Download the artifact from the workflow run.',
-              '2. Extract `netlink-ha-cards.zip` or use `dist/netlink-ha-cards.js`.',
-              '3. Replace the file in `config/www` and reload the `/local/netlink-ha-cards.js` resource.',
+              '2. Extract `netlink-ha-cards.zip` or use `dist/netlink-ha-cards.js` directly.',
+              '3. Replace the file in `config/www`.',
+              '4. Reload the `/local/netlink-ha-cards.js` resource in Home Assistant.',
             ].join('\n');
 
             const { data: comments } = await github.rest.issues.listComments({
