@@ -26,4 +26,5 @@ npm run build
 - Keep changes scoped.
 - Include screenshots or YAML examples when card behavior changes.
 - Note any Home Assistant version assumptions in the PR description.
+- Each PR publishes a preview artifact in GitHub Actions so the bundled card can be tested before merge.
 - Add one release label to each PR so Release Drafter can classify and version changes correctly.
