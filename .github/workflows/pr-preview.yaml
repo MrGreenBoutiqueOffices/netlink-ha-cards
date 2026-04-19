@@ -52,8 +52,7 @@ jobs:
     needs: build
     if: github.event.pull_request.head.repo.full_name == github.repository
     permissions:
-      actions: read
-      issues: write
+      pull-requests: write
     steps:
       - name: 💬 Upsert PR preview comment
         uses: actions/github-script@v8.0.0
