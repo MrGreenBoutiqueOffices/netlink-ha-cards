@@ -24,8 +24,15 @@ export class NetlinkAccessCodeCard extends LitElement {
   private timerId?: number;
 
   static styles = css`
+    :host {
+      display: block;
+      height: 100%;
+    }
+
     ha-card {
       display: block;
+      height: 100%;
+      box-sizing: border-box;
       padding: 20px;
       border-radius: 22px;
       position: relative;
@@ -140,7 +147,7 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     .meta {
       display: grid;
-      gap: 6px;
+      gap: 8px;
       color: var(--secondary-text-color);
       font-size: 13px;
     }
@@ -148,22 +155,25 @@ export class NetlinkAccessCodeCard extends LitElement {
     .meta-line {
       display: grid;
       grid-template-columns: 16px minmax(0, 1fr);
-      align-items: start;
-      gap: 8px;
+      align-items: center;
+      gap: 10px;
       min-width: 0;
-      line-height: 1.25;
+      min-height: 18px;
     }
 
     .meta-line ha-icon {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 16px;
       height: 16px;
-      margin-top: 1px;
+      align-self: center;
     }
 
     .meta-line span {
       display: block;
       min-width: 0;
+      line-height: 1.2;
       overflow-wrap: anywhere;
     }
 
@@ -374,9 +384,9 @@ export class NetlinkAccessCodeCard extends LitElement {
 
   public getGridOptions() {
     return {
-      rows: 5,
+      rows: 4,
       columns: 6,
-      min_rows: 5,
+      min_rows: 4,
       min_columns: 6,
     };
   }
