@@ -79,7 +79,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       min-width: 0;
     }
 
-    .icon {
+    .header-icon {
       color: var(--primary-color);
       display: inline-flex;
       align-items: center;
@@ -95,6 +95,8 @@ export class NetlinkAccessCodeCard extends LitElement {
       font-size: 15px;
       font-weight: 600;
       letter-spacing: 0.01em;
+      line-height: 1.2;
+      min-width: 0;
     }
 
     .body {
@@ -112,7 +114,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       justify-items: center;
       gap: 8px;
       min-height: 0;
-      padding-block: 6px 2px;
+      padding-block: 8px 6px;
     }
 
     .secondary {
@@ -125,12 +127,12 @@ export class NetlinkAccessCodeCard extends LitElement {
       font-family:
         "SFMono-Regular", "SF Mono", "Roboto Mono", "Menlo", monospace;
       font-size: clamp(32px, 10.5cqi, 46px);
-      line-height: 1;
+      line-height: 1.08;
       font-weight: 700;
       letter-spacing: 0.06em;
       color: var(--primary-text-color);
       text-wrap: nowrap;
-      overflow: hidden;
+      overflow: visible;
       font-variant-numeric: tabular-nums;
       text-align: center;
       width: 100%;
@@ -291,7 +293,7 @@ export class NetlinkAccessCodeCard extends LitElement {
         margin-bottom: 12px;
       }
 
-      .icon {
+      .header-icon {
         width: 30px;
         height: 30px;
         border-radius: 10px;
@@ -521,7 +523,7 @@ export class NetlinkAccessCodeCard extends LitElement {
     return html`
       <ha-card class="card ${isWarning ? "warning-state" : ""}">
         <div class="header">
-          <ha-icon class="icon" icon=${this.config.icon}></ha-icon>
+          <ha-icon class="header-icon" icon=${this.config.icon}></ha-icon>
           <div class="title">${this.config.title}</div>
         </div>
         <div class="body">
