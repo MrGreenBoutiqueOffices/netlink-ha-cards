@@ -68,6 +68,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       align-items: center;
       gap: 10px;
       margin-bottom: 14px;
+      min-width: 0;
     }
 
     .icon {
@@ -79,25 +80,30 @@ export class NetlinkAccessCodeCard extends LitElement {
       height: 34px;
       border-radius: 12px;
       background: color-mix(in srgb, var(--primary-color) 12%, transparent);
+      flex-shrink: 0;
     }
 
     .title {
       font-size: 15px;
       font-weight: 600;
       letter-spacing: 0.01em;
+      line-height: 1.2;
+      min-width: 0;
+      text-wrap: balance;
     }
 
     .code {
       font-family:
         "SFMono-Regular", "SF Mono", "Roboto Mono", "Menlo", monospace;
-      font-size: clamp(30px, 11cqi, 42px);
+      font-size: clamp(28px, 10cqi, 42px);
       line-height: 1;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       margin-bottom: 14px;
       color: var(--primary-text-color);
       text-wrap: nowrap;
       overflow: hidden;
+      font-variant-numeric: tabular-nums;
     }
 
     .code.missing {
@@ -132,8 +138,20 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     .meta-line {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 8px;
+      min-width: 0;
+      line-height: 1.35;
+    }
+
+    .meta-line ha-icon {
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .meta-line span {
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
 
     .warning {
@@ -151,6 +169,9 @@ export class NetlinkAccessCodeCard extends LitElement {
       color: var(--warning-color, #f59e0b);
       font-size: 12px;
       font-weight: 600;
+      line-height: 1.25;
+      max-width: 100%;
+      text-wrap: balance;
     }
 
     .actions {
@@ -160,6 +181,9 @@ export class NetlinkAccessCodeCard extends LitElement {
     }
 
     button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border: 0;
       background: color-mix(in srgb, var(--primary-color) 10%, transparent);
       color: var(--primary-text-color);
@@ -196,19 +220,70 @@ export class NetlinkAccessCodeCard extends LitElement {
         color-mix(in srgb, var(--primary-color) 38%, transparent);
     }
 
+    @container (max-width: 360px) {
+      .code {
+        font-size: clamp(24px, 14cqi, 34px);
+        letter-spacing: 0.04em;
+      }
+
+      .warning {
+        display: flex;
+      }
+    }
+
     @container (max-width: 280px) {
       ha-card {
         padding: 18px;
       }
 
-      .code {
-        font-size: clamp(26px, 14cqi, 34px);
-        letter-spacing: 0.05em;
+      .header {
+        gap: 8px;
         margin-bottom: 12px;
+      }
+
+      .icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
+      }
+
+      .title {
+        font-size: 14px;
+      }
+
+      .code {
+        font-size: clamp(22px, 18cqi, 30px);
+        letter-spacing: 0.03em;
+        margin-bottom: 12px;
+      }
+
+      .meta {
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      .empty-state {
+        font-size: 12px;
       }
 
       .actions {
         flex-wrap: wrap;
+        margin-top: 12px;
+      }
+
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .warning {
+        width: 100%;
+        border-radius: 14px;
+      }
+
+      .progress {
+        margin-top: 14px;
+        height: 8px;
       }
     }
   `;
@@ -251,6 +326,15 @@ export class NetlinkAccessCodeCard extends LitElement {
 
   public getCardSize(): number {
     return 3;
+  }
+
+  public getGridOptions() {
+    return {
+      rows: 4,
+      columns: 6,
+      min_rows: 3,
+      min_columns: 2,
+    };
   }
 
   protected render() {
