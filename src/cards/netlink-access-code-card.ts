@@ -337,9 +337,45 @@ export class NetlinkAccessCodeCard extends LitElement {
     }
 
     @container (max-height: 255px) and (max-width: 620px) {
+      .header {
+        margin-bottom: 10px;
+      }
+
+      .body {
+        gap: 10px;
+      }
+
+      .primary {
+        gap: 4px;
+      }
+
       .code {
-        font-size: clamp(24px, 8cqi, 34px);
-        letter-spacing: 0.04em;
+        font-size: clamp(26px, 9cqi, 38px);
+        line-height: 1.1;
+        letter-spacing: 0.03em;
+      }
+
+      .secondary {
+        gap: 10px;
+      }
+
+      .footer {
+        gap: 10px;
+      }
+
+      .meta {
+        gap: 6px;
+        font-size: 11px;
+      }
+
+      .warning {
+        font-size: 11px;
+        padding-block: 5px;
+      }
+
+      button {
+        min-height: 34px;
+        padding-block: 6px;
       }
 
       .progress-header {
