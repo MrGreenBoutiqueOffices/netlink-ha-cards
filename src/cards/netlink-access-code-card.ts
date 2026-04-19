@@ -30,6 +30,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       border-radius: 22px;
       position: relative;
       overflow: hidden;
+      container-type: inline-size;
       background:
         radial-gradient(
           circle at top right,
@@ -89,13 +90,14 @@ export class NetlinkAccessCodeCard extends LitElement {
     .code {
       font-family:
         "SFMono-Regular", "SF Mono", "Roboto Mono", "Menlo", monospace;
-      font-size: clamp(38px, 5vw, 46px);
-      line-height: 0.95;
+      font-size: clamp(30px, 11cqi, 42px);
+      line-height: 1;
       font-weight: 700;
-      letter-spacing: 0.12em;
-      margin-bottom: 16px;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
       color: var(--primary-text-color);
       text-wrap: nowrap;
+      overflow: hidden;
     }
 
     .code.missing {
@@ -192,6 +194,22 @@ export class NetlinkAccessCodeCard extends LitElement {
       transition: width 0.3s ease;
       box-shadow: 0 0 14px
         color-mix(in srgb, var(--primary-color) 38%, transparent);
+    }
+
+    @container (max-width: 280px) {
+      ha-card {
+        padding: 18px;
+      }
+
+      .code {
+        font-size: clamp(26px, 14cqi, 34px);
+        letter-spacing: 0.05em;
+        margin-bottom: 12px;
+      }
+
+      .actions {
+        flex-wrap: wrap;
+      }
     }
   `;
 
