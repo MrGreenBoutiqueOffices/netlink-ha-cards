@@ -98,6 +98,28 @@ export class NetlinkAccessCodeCard extends LitElement {
       text-wrap: nowrap;
     }
 
+    .code.missing {
+      font-family: inherit;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: normal;
+      text-wrap: balance;
+      margin-bottom: 10px;
+    }
+
+    .empty-state {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--divider-color) 24%, transparent);
+      color: var(--secondary-text-color);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
     .meta {
       display: flex;
       flex-direction: column;
@@ -226,16 +248,23 @@ export class NetlinkAccessCodeCard extends LitElement {
       this.hass,
       `_${this.config.purpose}_access_code_valid_until`
     );
-    const code = codeEntity?.state ?? "Not available";
+    const hasCode = Boolean(codeEntity?.state);
+    const hasValidUntil = Boolean(validUntilEntity?.state);
+    const hasData = hasCode || hasValidUntil;
+    const code = codeEntity?.state ?? "No code available";
 
     const validUntilMs = validUntilEntity
       ? new Date(validUntilEntity.state).getTime()
       : NaN;
     const validUntilText = Number.isNaN(validUntilMs)
-      ? "Unknown"
+      ? hasData
+        ? "Unknown"
+        : "No data"
       : formatDateTime(validUntilEntity?.state);
     const remainingText = Number.isNaN(validUntilMs)
-      ? ""
+      ? hasData
+        ? "Waiting for validity data"
+        : "No access code entities available"
       : formatRemaining(this.nowMs, validUntilMs);
     const progressPercent = Number.isNaN(validUntilMs)
       ? 0
@@ -243,6 +272,7 @@ export class NetlinkAccessCodeCard extends LitElement {
     const isWarning =
       !Number.isNaN(validUntilMs) && this.isRolloverSoon(validUntilMs);
     const copyLabel = this.copyFeedbackUntil > this.nowMs ? "Copied" : "Copy";
+    const canCopy = this.isCopyableCode(code);
 
     return html`
       <ha-card class="card ${isWarning ? "warning-state" : ""}">
@@ -250,7 +280,15 @@ export class NetlinkAccessCodeCard extends LitElement {
           <ha-icon class="icon" icon=${this.config.icon}></ha-icon>
           <div class="title">${this.config.title}</div>
         </div>
-        <div class="code">${code}</div>
+        <div class="code ${hasCode ? "" : "missing"}">${code}</div>
+        ${hasData
+          ? html``
+          : html`
+              <div class="empty-state">
+                <ha-icon icon="mdi:information-outline"></ha-icon>
+                <span>Waiting for NetLink access code entities.</span>
+              </div>
+            `}
         <div class="meta">
           <div class="meta-line">
             <ha-icon icon="mdi:calendar-clock-outline"></ha-icon>
@@ -269,20 +307,28 @@ export class NetlinkAccessCodeCard extends LitElement {
               </div>
             `
           : html``}
-        <div class="actions">
-          <button
-            type="button"
-            @click=${(event: Event) => this.handleCopyClick(event, code)}
-          >
-            ${copyLabel}
-          </button>
-        </div>
-        <div class="progress" aria-hidden="true">
-          <div
-            class="progress-bar"
-            style=${`width: ${progressPercent}%;`}
-          ></div>
-        </div>
+        ${canCopy
+          ? html`
+              <div class="actions">
+                <button
+                  type="button"
+                  @click=${(event: Event) => this.handleCopyClick(event, code)}
+                >
+                  ${copyLabel}
+                </button>
+              </div>
+            `
+          : html``}
+        ${hasValidUntil
+          ? html`
+              <div class="progress" aria-hidden="true">
+                <div
+                  class="progress-bar"
+                  style=${`width: ${progressPercent}%;`}
+                ></div>
+              </div>
+            `
+          : html``}
       </ha-card>
     `;
   }
