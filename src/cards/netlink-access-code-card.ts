@@ -92,6 +92,11 @@ export class NetlinkAccessCodeCard extends LitElement {
       text-wrap: balance;
     }
 
+    .body {
+      display: grid;
+      gap: 14px;
+    }
+
     .code {
       font-family:
         "SFMono-Regular", "SF Mono", "Roboto Mono", "Menlo", monospace;
@@ -126,6 +131,12 @@ export class NetlinkAccessCodeCard extends LitElement {
       color: var(--secondary-text-color);
       font-size: 13px;
       font-weight: 500;
+    }
+
+    .footer {
+      display: grid;
+      gap: 14px;
+      align-items: start;
     }
 
     .meta {
@@ -177,7 +188,6 @@ export class NetlinkAccessCodeCard extends LitElement {
     .actions {
       display: flex;
       gap: 8px;
-      margin-top: 14px;
     }
 
     button {
@@ -221,6 +231,11 @@ export class NetlinkAccessCodeCard extends LitElement {
     }
 
     @container (max-width: 360px) {
+      .body,
+      .footer {
+        gap: 12px;
+      }
+
       .code {
         font-size: clamp(24px, 14cqi, 34px);
         letter-spacing: 0.04em;
@@ -234,6 +249,11 @@ export class NetlinkAccessCodeCard extends LitElement {
     @container (max-width: 280px) {
       ha-card {
         padding: 18px;
+      }
+
+      .body,
+      .footer {
+        gap: 10px;
       }
 
       .header {
@@ -268,7 +288,6 @@ export class NetlinkAccessCodeCard extends LitElement {
 
       .actions {
         flex-wrap: wrap;
-        margin-top: 12px;
       }
 
       button {
@@ -284,6 +303,40 @@ export class NetlinkAccessCodeCard extends LitElement {
       .progress {
         margin-top: 14px;
         height: 8px;
+      }
+    }
+
+    @container (min-width: 420px) {
+      .footer.has-actions {
+        grid-template-columns: minmax(0, 1fr) auto;
+      }
+
+      .actions {
+        justify-content: flex-end;
+        align-self: start;
+      }
+    }
+
+    @container (min-width: 560px) {
+      ha-card {
+        padding: 22px;
+      }
+
+      .body {
+        gap: 16px;
+      }
+
+      .code {
+        font-size: clamp(32px, 7cqi, 44px);
+        letter-spacing: 0.08em;
+      }
+
+      .footer.has-actions {
+        gap: 18px;
+      }
+
+      button {
+        padding-inline: 14px;
       }
     }
   `;
@@ -382,55 +435,60 @@ export class NetlinkAccessCodeCard extends LitElement {
           <ha-icon class="icon" icon=${this.config.icon}></ha-icon>
           <div class="title">${this.config.title}</div>
         </div>
-        <div class="code ${hasCode ? "" : "missing"}">${code}</div>
-        ${hasData
-          ? html``
-          : html`
-              <div class="empty-state">
-                <ha-icon icon="mdi:information-outline"></ha-icon>
-                <span>Waiting for NetLink access code entities.</span>
+        <div class="body">
+          <div class="code ${hasCode ? "" : "missing"}">${code}</div>
+          ${hasData
+            ? html``
+            : html`
+                <div class="empty-state">
+                  <ha-icon icon="mdi:information-outline"></ha-icon>
+                  <span>Waiting for NetLink access code entities.</span>
+                </div>
+              `}
+          <div class="footer ${canCopy ? "has-actions" : ""}">
+            <div class="meta">
+              <div class="meta-line">
+                <ha-icon icon="mdi:calendar-clock-outline"></ha-icon>
+                <span>Valid until: ${validUntilText}</span>
               </div>
-            `}
-        <div class="meta">
-          <div class="meta-line">
-            <ha-icon icon="mdi:calendar-clock-outline"></ha-icon>
-            <span>Valid until: ${validUntilText}</span>
+              <div class="meta-line">
+                <ha-icon icon="mdi:timer-sand"></ha-icon>
+                <span>${remainingText}</span>
+              </div>
+            </div>
+            ${canCopy
+              ? html`
+                  <div class="actions">
+                    <button
+                      type="button"
+                      @click=${(event: Event) =>
+                        this.handleCopyClick(event, code)}
+                    >
+                      ${copyLabel}
+                    </button>
+                  </div>
+                `
+              : html``}
           </div>
-          <div class="meta-line">
-            <ha-icon icon="mdi:timer-sand"></ha-icon>
-            <span>${remainingText}</span>
-          </div>
+          ${isWarning
+            ? html`
+                <div class="warning">
+                  <ha-icon icon="mdi:clock-alert-outline"></ha-icon>
+                  <span>Code changes soon</span>
+                </div>
+              `
+            : html``}
+          ${hasValidUntil
+            ? html`
+                <div class="progress" aria-hidden="true">
+                  <div
+                    class="progress-bar"
+                    style=${`width: ${progressPercent}%;`}
+                  ></div>
+                </div>
+              `
+            : html``}
         </div>
-        ${isWarning
-          ? html`
-              <div class="warning">
-                <ha-icon icon="mdi:clock-alert-outline"></ha-icon>
-                <span>Code changes soon</span>
-              </div>
-            `
-          : html``}
-        ${canCopy
-          ? html`
-              <div class="actions">
-                <button
-                  type="button"
-                  @click=${(event: Event) => this.handleCopyClick(event, code)}
-                >
-                  ${copyLabel}
-                </button>
-              </div>
-            `
-          : html``}
-        ${hasValidUntil
-          ? html`
-              <div class="progress" aria-hidden="true">
-                <div
-                  class="progress-bar"
-                  style=${`width: ${progressPercent}%;`}
-                ></div>
-              </div>
-            `
-          : html``}
       </ha-card>
     `;
   }
