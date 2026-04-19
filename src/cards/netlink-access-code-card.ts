@@ -149,7 +149,7 @@ export class NetlinkAccessCodeCard extends LitElement {
     .meta-line {
       display: grid;
       grid-template-columns: 16px minmax(0, 1fr);
-      align-items: start;
+      align-items: center;
       gap: 8px;
       min-width: 0;
       line-height: 1.35;
@@ -158,7 +158,7 @@ export class NetlinkAccessCodeCard extends LitElement {
     .meta-line ha-icon {
       width: 16px;
       height: 16px;
-      margin-top: 0.08em;
+      align-self: center;
     }
 
     .meta-line span {
