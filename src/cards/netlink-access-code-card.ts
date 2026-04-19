@@ -330,7 +330,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       }
     }
 
-    @container (max-height: 255px) {
+    @container (max-height: 255px) and (max-width: 620px) {
       .progress-header {
         display: none;
       }
@@ -340,7 +340,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       }
     }
 
-    @container (min-width: 360px) {
+    @container (min-width: 300px) {
       .footer.has-actions {
         grid-template-columns: minmax(0, 1fr) auto;
       }
@@ -422,6 +422,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       rows: 4,
       columns: 6,
       min_rows: 4,
+      max_rows: 5,
       min_columns: 6,
     };
   }
