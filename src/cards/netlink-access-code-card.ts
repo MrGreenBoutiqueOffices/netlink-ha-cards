@@ -30,14 +30,15 @@ export class NetlinkAccessCodeCard extends LitElement {
     }
 
     ha-card {
-      display: block;
+      display: flex;
+      flex-direction: column;
       height: 100%;
       box-sizing: border-box;
       padding: 20px;
       border-radius: 22px;
       position: relative;
       overflow: hidden;
-      container-type: inline-size;
+      container-type: size;
       background:
         radial-gradient(
           circle at top right,
@@ -101,7 +102,23 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     .body {
       display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
       gap: 14px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .primary {
+      display: grid;
+      align-content: start;
+      gap: 12px;
+      min-height: 0;
+    }
+
+    .secondary {
+      display: grid;
+      gap: 14px;
+      align-content: end;
     }
 
     .code {
@@ -162,12 +179,10 @@ export class NetlinkAccessCodeCard extends LitElement {
     }
 
     .meta-line ha-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: block;
       width: 16px;
       height: 16px;
-      align-self: center;
+      margin-top: 1px;
     }
 
     .meta-line span {
@@ -315,6 +330,16 @@ export class NetlinkAccessCodeCard extends LitElement {
       }
     }
 
+    @container (max-height: 255px) {
+      .progress-header {
+        display: none;
+      }
+
+      .progress-wrap {
+        gap: 0;
+      }
+    }
+
     @container (min-width: 360px) {
       .footer.has-actions {
         grid-template-columns: minmax(0, 1fr) auto;
@@ -338,6 +363,16 @@ export class NetlinkAccessCodeCard extends LitElement {
 
       button {
         padding-inline: 14px;
+      }
+    }
+
+    @container (min-height: 280px) {
+      .primary {
+        align-content: center;
+      }
+
+      .code {
+        font-size: clamp(32px, 10cqi, 48px);
       }
     }
   `;
@@ -437,63 +472,67 @@ export class NetlinkAccessCodeCard extends LitElement {
           <div class="title">${this.config.title}</div>
         </div>
         <div class="body">
-          <div class="code ${hasCode ? "" : "missing"}">${code}</div>
-          ${hasData
-            ? html``
-            : html`
-                <div class="empty-state">
-                  <ha-icon icon="mdi:information-outline"></ha-icon>
-                  <span>Waiting for NetLink access code entities.</span>
+          <div class="primary">
+            <div class="code ${hasCode ? "" : "missing"}">${code}</div>
+            ${hasData
+              ? html``
+              : html`
+                  <div class="empty-state">
+                    <ha-icon icon="mdi:information-outline"></ha-icon>
+                    <span>Waiting for NetLink access code entities.</span>
+                  </div>
+                `}
+          </div>
+          <div class="secondary">
+            <div class="footer ${canCopy ? "has-actions" : ""}">
+              <div class="meta">
+                <div class="meta-line">
+                  <ha-icon icon="mdi:calendar-clock-outline"></ha-icon>
+                  <span>Valid until: ${validUntilText}</span>
                 </div>
-              `}
-          <div class="footer ${canCopy ? "has-actions" : ""}">
-            <div class="meta">
-              <div class="meta-line">
-                <ha-icon icon="mdi:calendar-clock-outline"></ha-icon>
-                <span>Valid until: ${validUntilText}</span>
+                <div class="meta-line">
+                  <ha-icon icon="mdi:timer-sand"></ha-icon>
+                  <span>${remainingText}</span>
+                </div>
               </div>
-              <div class="meta-line">
-                <ha-icon icon="mdi:timer-sand"></ha-icon>
-                <span>${remainingText}</span>
-              </div>
+              ${canCopy
+                ? html`
+                    <div class="actions">
+                      <button
+                        type="button"
+                        @click=${(event: Event) =>
+                          this.handleCopyClick(event, code)}
+                      >
+                        ${copyLabel}
+                      </button>
+                    </div>
+                  `
+                : html``}
             </div>
-            ${canCopy
+            ${isWarning
               ? html`
-                  <div class="actions">
-                    <button
-                      type="button"
-                      @click=${(event: Event) =>
-                        this.handleCopyClick(event, code)}
-                    >
-                      ${copyLabel}
-                    </button>
+                  <div class="warning">
+                    <ha-icon icon="mdi:clock-alert-outline"></ha-icon>
+                    <span>Code changes soon</span>
+                  </div>
+                `
+              : html``}
+            ${hasValidUntil
+              ? html`
+                  <div class="progress-wrap">
+                    <div class="progress-header">
+                      <span>Cycle progress</span>
+                    </div>
+                    <div class="progress" aria-hidden="true">
+                      <div
+                        class="progress-bar"
+                        style=${`width: ${progressPercent}%;`}
+                      ></div>
+                    </div>
                   </div>
                 `
               : html``}
           </div>
-          ${isWarning
-            ? html`
-                <div class="warning">
-                  <ha-icon icon="mdi:clock-alert-outline"></ha-icon>
-                  <span>Code changes soon</span>
-                </div>
-              `
-            : html``}
-          ${hasValidUntil
-            ? html`
-                <div class="progress-wrap">
-                  <div class="progress-header">
-                    <span>Cycle progress</span>
-                  </div>
-                  <div class="progress" aria-hidden="true">
-                    <div
-                      class="progress-bar"
-                      style=${`width: ${progressPercent}%;`}
-                    ></div>
-                  </div>
-                </div>
-              `
-            : html``}
         </div>
       </ha-card>
     `;
