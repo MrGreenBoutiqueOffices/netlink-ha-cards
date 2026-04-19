@@ -17,6 +17,23 @@ export function formatDateTime(value?: string | null): string {
   }).format(date);
 }
 
+export function formatDate(value?: string | null): string {
+  if (!value) {
+    return "Unknown";
+  }
+
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return "Unknown";
+  }
+
+  return new Intl.DateTimeFormat(undefined, {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  }).format(date);
+}
+
 export function formatRemaining(nowMs: number, validUntilMs: number): string {
   const remainingMs = validUntilMs - nowMs;
   if (remainingMs <= 0) {

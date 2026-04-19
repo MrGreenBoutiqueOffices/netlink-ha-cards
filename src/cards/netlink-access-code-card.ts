@@ -2,7 +2,7 @@ import { LitElement, css, html } from "lit";
 import { property, state } from "lit/decorators.js";
 
 import type { HomeAssistant } from "../types/home-assistant";
-import { formatDateTime, formatRemaining } from "../utils/formatting";
+import { formatDate, formatRemaining } from "../utils/formatting";
 import { findStateBySuffix, registerCustomCard } from "../utils/home-assistant";
 
 export type AccessCodePurpose = "web_login" | "signing_maintenance";
@@ -112,7 +112,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       display: grid;
       align-content: center;
       justify-items: center;
-      gap: 12px;
+      gap: 8px;
       min-height: 0;
     }
 
@@ -129,12 +129,12 @@ export class NetlinkAccessCodeCard extends LitElement {
       line-height: 1;
       font-weight: 700;
       letter-spacing: 0.06em;
-      margin-bottom: 14px;
       color: var(--primary-text-color);
       text-wrap: nowrap;
       overflow: hidden;
       font-variant-numeric: tabular-nums;
       text-align: center;
+      width: 100%;
     }
 
     .code.missing {
@@ -337,6 +337,11 @@ export class NetlinkAccessCodeCard extends LitElement {
     }
 
     @container (max-height: 255px) and (max-width: 620px) {
+      .code {
+        font-size: clamp(24px, 8cqi, 34px);
+        letter-spacing: 0.04em;
+      }
+
       .progress-header {
         display: none;
       }
@@ -458,7 +463,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       ? hasData
         ? "Unknown"
         : "No data"
-      : formatDateTime(validUntilEntity?.state);
+      : formatDate(validUntilEntity?.state);
     const remainingText = Number.isNaN(validUntilMs)
       ? hasData
         ? "Waiting for validity data"
