@@ -95,9 +95,6 @@ export class NetlinkAccessCodeCard extends LitElement {
       font-size: 15px;
       font-weight: 600;
       letter-spacing: 0.01em;
-      line-height: 1.2;
-      min-width: 0;
-      text-wrap: balance;
     }
 
     .body {
@@ -110,10 +107,11 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     .primary {
       display: grid;
-      align-content: center;
+      place-content: center;
       justify-items: center;
       gap: 8px;
       min-height: 0;
+      padding-block: 4px;
     }
 
     .secondary {
@@ -415,11 +413,12 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     @container (min-height: 280px) {
       .primary {
-        align-content: center;
+        padding-block: 8px;
       }
 
       .code {
-        font-size: clamp(32px, 10cqi, 48px);
+        font-size: clamp(36px, 11cqi, 56px);
+        letter-spacing: 0.07em;
       }
     }
   `;
