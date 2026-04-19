@@ -110,7 +110,8 @@ export class NetlinkAccessCodeCard extends LitElement {
 
     .primary {
       display: grid;
-      align-content: start;
+      align-content: center;
+      justify-items: center;
       gap: 12px;
       min-height: 0;
     }
@@ -133,6 +134,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       text-wrap: nowrap;
       overflow: hidden;
       font-variant-numeric: tabular-nums;
+      text-align: center;
     }
 
     .code.missing {
@@ -154,6 +156,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       color: var(--secondary-text-color);
       font-size: 13px;
       font-weight: 500;
+      justify-self: center;
     }
 
     .footer {
@@ -175,20 +178,22 @@ export class NetlinkAccessCodeCard extends LitElement {
       align-items: center;
       gap: 10px;
       min-width: 0;
-      min-height: 18px;
+      min-height: 20px;
     }
 
     .meta-line ha-icon {
-      display: block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       width: 16px;
       height: 16px;
-      margin-top: 1px;
+      align-self: center;
     }
 
     .meta-line span {
       display: block;
       min-width: 0;
-      line-height: 1.2;
+      line-height: 1.25;
       overflow-wrap: anywhere;
     }
 
