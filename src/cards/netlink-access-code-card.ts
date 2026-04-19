@@ -25,27 +25,22 @@ export class NetlinkAccessCodeCard extends LitElement {
 
   static styles = css`
     ha-card {
-      position: relative;
       display: block;
-      padding: 0;
-      border-radius: 24px;
+      padding: 20px;
+      border-radius: 22px;
+      position: relative;
       overflow: hidden;
       container-type: inline-size;
       background:
         radial-gradient(
           circle at top right,
-          rgb(255 255 255 / 0.14) 0%,
-          transparent 36%
-        ),
-        radial-gradient(
-          circle at bottom left,
           color-mix(in srgb, var(--primary-color) 14%, transparent) 0%,
-          transparent 44%
+          transparent 48%
         ),
         linear-gradient(
-          160deg,
-          color-mix(in srgb, var(--card-background-color) 92%, #0f172a 8%) 0%,
-          color-mix(in srgb, var(--card-background-color) 96%, black 4%) 100%
+          180deg,
+          color-mix(in srgb, var(--card-background-color) 92%, white 8%) 0%,
+          var(--card-background-color) 100%
         );
       box-shadow: var(--ha-card-box-shadow, none);
     }
@@ -68,270 +63,153 @@ export class NetlinkAccessCodeCard extends LitElement {
       );
     }
 
-    .shell {
-      display: grid;
-      gap: 10px;
-      padding: 14px;
-    }
-
     .header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 10px;
-      min-width: 0;
-    }
-
-    .header-main {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      margin-bottom: 14px;
       min-width: 0;
     }
 
     .icon {
+      color: var(--primary-color);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: 34px;
       height: 34px;
-      border-radius: 10px;
-      color: color-mix(in srgb, var(--primary-color) 82%, white 18%);
-      background: linear-gradient(
-        180deg,
-        color-mix(in srgb, var(--primary-color) 24%, transparent) 0%,
-        color-mix(in srgb, var(--primary-color) 12%, transparent) 100%
-      );
-      box-shadow: inset 0 0 0 1px
-        color-mix(in srgb, var(--primary-color) 22%, transparent);
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--primary-color) 12%, transparent);
       flex-shrink: 0;
     }
 
-    .header-copy {
-      min-width: 0;
-      display: grid;
-      gap: 0;
-    }
-
-    .eyebrow {
-      color: var(--secondary-text-color);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
     .title {
-      color: var(--primary-text-color);
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 1.1;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
       min-width: 0;
       text-wrap: balance;
     }
 
-    .header-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 7px;
-      border-radius: 999px;
-      color: var(--secondary-text-color);
-      background: color-mix(in srgb, var(--divider-color) 18%, transparent);
-      box-shadow: inset 0 0 0 1px
-        color-mix(in srgb, var(--divider-color) 40%, transparent);
-      font-size: 10px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
     .body {
       display: grid;
-      gap: 10px;
-    }
-
-    .hero {
-      display: grid;
-      gap: 8px;
-      padding: 10px;
-      border-radius: 14px;
-      background: linear-gradient(
-        180deg,
-        color-mix(in srgb, var(--primary-color) 14%, transparent) 0%,
-        color-mix(in srgb, var(--card-background-color) 94%, black 6%) 100%
-      );
-      box-shadow:
-        inset 0 0 0 1px
-          color-mix(in srgb, var(--primary-color) 16%, transparent),
-        inset 0 1px 0 rgb(255 255 255 / 0.04);
-    }
-
-    .code-card {
-      display: grid;
-      gap: 2px;
-      min-width: 0;
-    }
-
-    .code-label {
-      color: var(--secondary-text-color);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      gap: 14px;
     }
 
     .code {
       font-family:
         "SFMono-Regular", "SF Mono", "Roboto Mono", "Menlo", monospace;
-      font-size: clamp(22px, 8cqi, 34px);
-      line-height: 0.94;
+      font-size: clamp(28px, 10cqi, 42px);
+      line-height: 1;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
       color: var(--primary-text-color);
       text-wrap: nowrap;
       overflow: hidden;
       font-variant-numeric: tabular-nums;
-      text-shadow: 0 1px 0 rgb(255 255 255 / 0.06);
     }
 
     .code.missing {
       font-family: inherit;
-      font-size: 15px;
+      font-size: 20px;
       line-height: 1.2;
       letter-spacing: normal;
       text-wrap: balance;
-      font-weight: 600;
-    }
-
-    .code-hint {
-      color: var(--secondary-text-color);
-      font-size: 11px;
-      line-height: 1.25;
+      margin-bottom: 10px;
     }
 
     .empty-state {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 9px;
-      border-radius: 9px;
-      background: color-mix(in srgb, var(--divider-color) 18%, transparent);
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--divider-color) 24%, transparent);
       color: var(--secondary-text-color);
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 500;
+    }
+
+    .footer {
+      display: grid;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      color: var(--secondary-text-color);
+      font-size: 13px;
+    }
+
+    .meta-line {
+      display: grid;
+      grid-template-columns: 16px minmax(0, 1fr);
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      line-height: 1.35;
+    }
+
+    .meta-line ha-icon {
+      width: 16px;
+      height: 16px;
+      align-self: center;
+    }
+
+    .meta-line span {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .warning {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: color-mix(
+        in srgb,
+        var(--warning-color, #f59e0b) 18%,
+        transparent
+      );
+      color: var(--warning-color, #f59e0b);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.25;
+      max-width: 100%;
+      text-wrap: balance;
     }
 
     .actions {
       display: flex;
-      gap: 6px;
+      gap: 8px;
     }
 
     button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      min-height: 32px;
-      padding: 0 10px;
       border: 0;
-      border-radius: 10px;
-      background: linear-gradient(
-        180deg,
-        color-mix(in srgb, var(--primary-color) 26%, transparent) 0%,
-        color-mix(in srgb, var(--primary-color) 16%, transparent) 100%
-      );
+      background: color-mix(in srgb, var(--primary-color) 10%, transparent);
       color: var(--primary-text-color);
-      box-shadow:
-        inset 0 0 0 1px
-          color-mix(in srgb, var(--primary-color) 20%, transparent),
-        0 10px 24px color-mix(in srgb, var(--primary-color) 12%, transparent);
+      padding: 8px 12px;
+      border-radius: 10px;
       font: inherit;
-      font-size: 11px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 600;
       cursor: pointer;
       transition:
         background 0.15s ease,
-        transform 0.15s ease,
-        box-shadow 0.15s ease;
+        transform 0.15s ease;
     }
 
     button:hover {
-      background: linear-gradient(
-        180deg,
-        color-mix(in srgb, var(--primary-color) 32%, transparent) 0%,
-        color-mix(in srgb, var(--primary-color) 20%, transparent) 100%
-      );
+      background: color-mix(in srgb, var(--primary-color) 18%, transparent);
       transform: translateY(-1px);
-      box-shadow:
-        inset 0 0 0 1px
-          color-mix(in srgb, var(--primary-color) 28%, transparent),
-        0 14px 28px color-mix(in srgb, var(--primary-color) 16%, transparent);
-    }
-
-    .facts {
-      display: grid;
-      gap: 6px;
-    }
-
-    .fact {
-      display: grid;
-      gap: 4px;
-      padding: 8px 10px;
-      border-radius: 12px;
-      background: color-mix(in srgb, var(--divider-color) 14%, transparent);
-      box-shadow: inset 0 0 0 1px
-        color-mix(in srgb, var(--divider-color) 32%, transparent);
-    }
-
-    .fact-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      min-width: 0;
-      color: var(--secondary-text-color);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .fact-header ha-icon {
-      width: 16px;
-      height: 16px;
-      color: color-mix(in srgb, var(--primary-color) 72%, white 28%);
-    }
-
-    .fact-value {
-      color: var(--primary-text-color);
-      font-size: 12px;
-      font-weight: 600;
-      line-height: 1.2;
-      overflow-wrap: anywhere;
-    }
-
-    .warning {
-      display: grid;
-      grid-template-columns: 18px minmax(0, 1fr);
-      gap: 7px;
-      align-items: start;
-      padding: 8px 10px;
-      border-radius: 12px;
-      background: color-mix(
-        in srgb,
-        var(--warning-color, #f59e0b) 14%,
-        transparent
-      );
-      box-shadow: inset 0 0 0 1px
-        color-mix(in srgb, var(--warning-color, #f59e0b) 24%, transparent);
-      color: var(--warning-color, #f59e0b);
-      font-size: 11px;
-      font-weight: 600;
-      line-height: 1.35;
-    }
-
-    .warning ha-icon {
-      width: 16px;
-      height: 16px;
     }
 
     .progress-wrap {
@@ -352,90 +230,24 @@ export class NetlinkAccessCodeCard extends LitElement {
     }
 
     .progress {
-      height: 8px;
+      height: 10px;
       border-radius: 999px;
       overflow: hidden;
-      background: color-mix(in srgb, var(--divider-color) 26%, transparent);
-      box-shadow: inset 0 0 0 1px
-        color-mix(in srgb, var(--divider-color) 36%, transparent);
+      background: color-mix(in srgb, var(--divider-color) 60%, transparent);
     }
 
     .progress-bar {
       height: 100%;
-      background: linear-gradient(
-        90deg,
-        color-mix(in srgb, var(--primary-color) 74%, white 26%) 0%,
-        var(--primary-color) 100%
-      );
+      background: var(--primary-color);
       border-radius: 999px;
       transition: width 0.3s ease;
-      box-shadow: 0 0 18px
-        color-mix(in srgb, var(--primary-color) 32%, transparent);
+      box-shadow: 0 0 14px
+        color-mix(in srgb, var(--primary-color) 38%, transparent);
     }
 
     @container (max-width: 280px) {
-      .shell {
+      ha-card {
         padding: 12px;
-      }
-
-      .body {
-        gap: 8px;
-      }
-
-      .header {
-        align-items: start;
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .header-tag {
-        justify-self: start;
-      }
-
-      .hero {
-        padding: 9px;
-      }
-
-      .code {
-        font-size: clamp(19px, 15cqi, 26px);
-        letter-spacing: 0.03em;
-      }
-
-      .facts {
-        gap: 8px;
-      }
-
-      .actions {
-        display: grid;
-      }
-
-      button {
-        width: 100%;
-      }
-
-      .progress {
-        height: 7px;
-      }
-    }
-
-    @container (min-width: 360px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr) auto;
-        align-items: end;
-      }
-
-      .actions {
-        justify-content: end;
-        align-self: end;
-      }
-
-      .facts {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @container (min-width: 560px) {
-      .shell {
-        padding: 16px;
       }
 
       .body {
@@ -443,24 +255,77 @@ export class NetlinkAccessCodeCard extends LitElement {
       }
 
       .header {
-        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
       }
 
       .title {
-        font-size: 15px;
+        font-size: 14px;
       }
 
       .code {
-        font-size: clamp(24px, 5.8cqi, 34px);
-        letter-spacing: 0.06em;
+        font-size: clamp(22px, 18cqi, 30px);
+        letter-spacing: 0.03em;
+        margin-bottom: 12px;
       }
 
-      .fact {
-        padding: 9px 11px;
+      .meta {
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      .empty-state {
+        font-size: 12px;
+      }
+
+      .actions {
+        flex-wrap: wrap;
       }
 
       button {
-        padding-inline: 12px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .warning {
+        width: 100%;
+        border-radius: 14px;
+      }
+
+      .progress {
+        height: 8px;
+      }
+    }
+
+    @container (min-width: 360px) {
+      .footer.has-actions {
+        grid-template-columns: minmax(0, 1fr) auto;
+      }
+
+      .actions {
+        justify-content: flex-end;
+        align-self: start;
+      }
+    }
+
+    @container (min-width: 560px) {
+      ha-card {
+        padding: 22px;
+      }
+
+      .code {
+        font-size: clamp(32px, 7cqi, 44px);
+        letter-spacing: 0.08em;
+      }
+
+      button {
+        padding-inline: 14px;
       }
     }
   `;
@@ -552,98 +417,70 @@ export class NetlinkAccessCodeCard extends LitElement {
       !Number.isNaN(validUntilMs) && this.isRolloverSoon(validUntilMs);
     const copyLabel = this.copyFeedbackUntil > this.nowMs ? "Copied" : "Copy";
     const canCopy = this.isCopyableCode(code);
-    const progressLabel = `${Math.round(progressPercent)}%`;
 
     return html`
       <ha-card class="card ${isWarning ? "warning-state" : ""}">
-        <div class="shell">
-          <div class="header">
-            <div class="header-main">
-              <ha-icon class="icon" icon=${this.config.icon}></ha-icon>
-              <div class="header-copy">
-                <div class="eyebrow">NetLink Access</div>
-                <div class="title">${this.config.title}</div>
-              </div>
-            </div>
-            <div class="header-tag">
-              ${this.config.purpose.replace("_", " ")}
-            </div>
-          </div>
-          <div class="body">
-            <div class="hero">
-              <div class="code-card">
-                <div class="code-label">Current code</div>
-                <div class="code ${hasCode ? "" : "missing"}">${code}</div>
-                ${hasData
-                  ? html`<div class="code-hint">
-                      Use this code before rollover.
-                    </div>`
-                  : html`
-                      <div class="empty-state">
-                        <ha-icon icon="mdi:information-outline"></ha-icon>
-                        <span>Waiting for NetLink access code entities.</span>
-                      </div>
-                    `}
-              </div>
-              ${canCopy
-                ? html`
-                    <div class="actions">
-                      <button
-                        type="button"
-                        @click=${(event: Event) =>
-                          this.handleCopyClick(event, code)}
-                      >
-                        <ha-icon icon="mdi:content-copy"></ha-icon>
-                        ${copyLabel}
-                      </button>
-                    </div>
-                  `
-                : html``}
-            </div>
-            <div class="facts">
-              <div class="fact">
-                <div class="fact-header">
-                  <ha-icon icon="mdi:calendar-clock-outline"></ha-icon>
-                  <span>Valid until</span>
+        <div class="header">
+          <ha-icon class="icon" icon=${this.config.icon}></ha-icon>
+          <div class="title">${this.config.title}</div>
+        </div>
+        <div class="body">
+          <div class="code ${hasCode ? "" : "missing"}">${code}</div>
+          ${hasData
+            ? html``
+            : html`
+                <div class="empty-state">
+                  <ha-icon icon="mdi:information-outline"></ha-icon>
+                  <span>Waiting for NetLink access code entities.</span>
                 </div>
-                <div class="fact-value">${validUntilText}</div>
+              `}
+          <div class="footer ${canCopy ? "has-actions" : ""}">
+            <div class="meta">
+              <div class="meta-line">
+                <ha-icon icon="mdi:calendar-clock-outline"></ha-icon>
+                <span>Valid until: ${validUntilText}</span>
               </div>
-              <div class="fact">
-                <div class="fact-header">
-                  <ha-icon icon="mdi:timer-sand"></ha-icon>
-                  <span>Remaining</span>
-                </div>
-                <div class="fact-value">${remainingText}</div>
+              <div class="meta-line">
+                <ha-icon icon="mdi:timer-sand"></ha-icon>
+                <span>${remainingText}</span>
               </div>
             </div>
-            ${isWarning
+            ${canCopy
               ? html`
-                  <div class="warning">
-                    <ha-icon icon="mdi:clock-alert-outline"></ha-icon>
-                    <div>
-                      Code changes soon. Replace it before the current validity
-                      window ends.
-                    </div>
-                  </div>
-                `
-              : html``}
-            ${hasValidUntil
-              ? html`
-                  <div class="progress-wrap">
-                    <div class="progress-header">
-                      <span>Cycle progress</span>
-                      <span>${progressLabel}</span>
-                    </div>
-                    <div class="progress" aria-hidden="true">
-                      <div
-                        class="progress-bar"
-                        style=${`width: ${progressPercent}%;`}
-                      ></div>
-                    </div>
+                  <div class="actions">
+                    <button
+                      type="button"
+                      @click=${(event: Event) => this.handleCopyClick(event, code)}
+                    >
+                      ${copyLabel}
+                    </button>
                   </div>
                 `
               : html``}
           </div>
+          ${isWarning
+            ? html`
+                <div class="warning">
+                  <ha-icon icon="mdi:clock-alert-outline"></ha-icon>
+                  <span>Code changes soon</span>
+                </div>
+              `
+            : html``}
+          ${hasValidUntil
+            ? html`
+                <div class="progress-wrap">
+                  <div class="progress-header">
+                    <span>Cycle progress</span>
+                  </div>
+                  <div class="progress" aria-hidden="true">
+                    <div
+                      class="progress-bar"
+                      style=${`width: ${progressPercent}%;`}
+                    ></div>
+                  </div>
+                </div>
+              `
+            : html``}
         </div>
       </ha-card>
     `;
