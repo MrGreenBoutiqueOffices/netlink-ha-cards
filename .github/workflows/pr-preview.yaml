@@ -88,9 +88,8 @@ jobs:
               '',
               '### 📝 Installation instructions',
               '1. Download the artifact from the workflow run.',
-              '2. Extract `netlink-ha-cards.zip` or use `dist/netlink-ha-cards.js` directly.',
-              '3. Replace the file in `config/www`.',
-              '4. Reload the `/local/netlink-ha-cards.js` resource in Home Assistant.',
+              '2. Extract `netlink-ha-cards.zip` or use `dist/netlink-ha-cards.js` directly, then replace the file in `config/www`.',
+              '3. Reload the `/local/netlink-ha-cards.js` resource in Home Assistant.',
             ].join('\n');
 
             const { data: comments } = await github.rest.issues.listComments({
