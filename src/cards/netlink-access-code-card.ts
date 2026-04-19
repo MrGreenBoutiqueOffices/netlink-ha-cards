@@ -140,24 +140,25 @@ export class NetlinkAccessCodeCard extends LitElement {
     }
 
     .meta {
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 6px;
       color: var(--secondary-text-color);
       font-size: 13px;
     }
 
     .meta-line {
-      display: flex;
-      align-items: flex-start;
+      display: grid;
+      grid-template-columns: 16px minmax(0, 1fr);
+      align-items: start;
       gap: 8px;
       min-width: 0;
       line-height: 1.35;
     }
 
     .meta-line ha-icon {
-      flex-shrink: 0;
-      margin-top: 1px;
+      width: 16px;
+      height: 16px;
+      margin-top: 0.08em;
     }
 
     .meta-line span {
@@ -386,7 +387,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       rows: 4,
       columns: 6,
       min_rows: 3,
-      min_columns: 2,
+      min_columns: 6,
     };
   }
 
