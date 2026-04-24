@@ -375,8 +375,7 @@ export class NetlinkAccessCodeCard extends LitElement {
       }
 
       .warning {
-        font-size: 11px;
-        padding-block: 5px;
+        display: none;
       }
 
       button {
