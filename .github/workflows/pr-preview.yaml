@@ -38,7 +38,7 @@ jobs:
       - name: 📦 Archive preview bundle
         run: cd dist && zip -r ../netlink-ha-cards.zip .
       - name: ⬆️ Upload preview artifact
-        uses: actions/upload-artifact@v7.0.1
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: ${{ env.ARTIFACT_NAME }}
           path: |
